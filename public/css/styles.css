@@ -117,8 +117,6 @@ nav li:hover {
 /******* Footer ***************/
 footer {
   display: flex;
-  position: fixed;
-  bottom: 0;
   justify-content: start;
   padding: 10px;
   width: 100%;
@@ -126,4 +124,15 @@ footer {
 .copyright {
   color: var(--tertiary-color);
   font-size: 0.8em;
+}
+
+/******* Main Content ***************/
+main {
+  padding: 20px;
+}
+
+.grid-container-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
