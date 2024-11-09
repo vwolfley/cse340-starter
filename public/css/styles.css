@@ -27,17 +27,42 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+/********* Breakpoints **********
+sm = 640px
+md = 768px
+lg = 1024px
+xl = 1280px
+***************/
+
 html,
 body {
+    height: 100%;
+    width: 100%;
     padding: 0;
     margin: 0;
     font-family: var(--font-paragraph);
     font-size: var(--font-base);
     color: var(--tertiary-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     font-weight: 400;
     font-style: normal;
-    line-height: 1.6;
+    background-color: var(--background);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
     min-height: 100vh;
+}
+@media (min-width: 768px) {
+    body {
+        background-image: url('/images/site/small_check.jpg');
+    }
 }
 /******* Headings ***************/
 h1,
@@ -71,16 +96,6 @@ h4 {
 }
 
 /******* Wrapper ***************/
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: var(--background);
-}
 
 #wrapper {
     display: flex;
@@ -92,9 +107,6 @@ body {
 }
 
 @media (min-width: 768px) {
-    body {
-        background-image: url('/images/site/small_check.jpg');
-    }
     #wrapper {
         box-sizing: border-box;
         border-radius: 5px;
@@ -224,7 +236,7 @@ main {
     flex-direction: column;
     grid-column: 1/6;
     grid-row: 2;
-    background-color: rgba(255, 255, 255, .9);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 15px;
     border-radius: 5px;
     max-width: 300px;
