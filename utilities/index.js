@@ -75,6 +75,40 @@ Util.buildClassificationGrid = async function (data) {
     return grid
 }
 
+/* **************************************
+ * Build the details view HTML
+ * ************************************ */
+Util.buildDetailsGrid = async function (data) {
+    let grid
+    if (data.length > 0) {
+        grid = '<article id="details-display">'
+        grid += '<h2>' + data[0].inv_make + ' ' + data[0].inv_model + '</h2>'
+        grid +=
+            '<img src="' +
+            data[0].inv_thumbnail +
+            '" alt="Image of ' +
+            data[0].inv_make +
+            ' ' +
+            data[0].inv_model +
+            ' on CSE Motors" />'
+        grid += '<div id="details-info">'
+        grid += '<h3>Vehicle Details</h3>'
+        grid += '<p>Year: ' + data[0].inv_year + '</p>'
+        grid += '<p>Make: ' + data[0].inv_make + '</p>'
+        grid += '<p>Model: ' + data[0].inv_model + '</p>'
+        grid += '<p>Price: $' + new Intl.NumberFormat('en-US').format(data[0].inv_price) + '</p>'
+        grid += '<p>Color: ' + data[0].inv_color + '</p>'
+        grid += '<p>Stock: ' + data[0].inv_stock + '</p>'
+        grid += '<p>Classification: ' + data[0].classification_name + '</p>'
+        grid += '<p>Description: ' + data[0].inv_description + '</p>'
+        grid += '</div>'
+        grid += '</article>'
+    } else {
+        grid += '<p class="notice">Sorry, no matching vehicles details could be found.</p>'
+    }
+    return grid
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for
