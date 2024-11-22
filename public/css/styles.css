@@ -160,7 +160,7 @@ nav ul {
     padding: 0;
 }
 
-nav li a{
+nav li a {
     color: white;
     font-size: 1.2em;
     font-weight: bold;
@@ -362,4 +362,28 @@ main {
 .upgrades-item a {
     color: var(--primary-color);
     font-size: 0.8em;
+}
+
+/******* Error Page Stylings ***************/
+#error-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+#error-page img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Media query for larger screens (1024px and up) */
+@media (min-width: 1024px) {
+    #error-page {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.error-message {
+    display: flex;
+    flex-direction: column;
 }
