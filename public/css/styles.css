@@ -9,7 +9,7 @@
     --tertiary-color: #081534;
     --accent-color: #47a8e5;
     --accent-color2: #f68f1e;
-    --light-grey: #c6c6c6;
+    --light-grey: #f3f3f3;
     --medium-grey: #939599;
     --dark-grey: #242021;
     --background: #ffffff;
@@ -160,13 +160,14 @@ nav ul {
     padding: 0;
 }
 
-nav li {
+nav li a {
     color: white;
     font-size: 1.2em;
     font-weight: bold;
+    text-decoration: none;
 }
 
-nav li:hover {
+nav li a:hover {
     color: var(--accent-color);
     cursor: pointer;
 }
@@ -174,6 +175,7 @@ nav li:hover {
 /******* Footer ***************/
 footer {
     display: flex;
+    flex-direction: column;
     justify-content: start;
     padding: 10px;
     width: 100%;
@@ -181,6 +183,13 @@ footer {
 .copyright {
     color: var(--tertiary-color);
     font-size: 0.8em;
+}
+footer a {
+    color: var(--primary-color);
+    font-size: .8em;
+}
+footer a:hover {
+    color: var(--accent-color);
 }
 
 /******* Main Content ***************/
@@ -361,4 +370,28 @@ main {
 .upgrades-item a {
     color: var(--primary-color);
     font-size: 0.8em;
+}
+
+/******* Error Page Stylings ***************/
+#error-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+#error-page img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Media query for larger screens (1024px and up) */
+@media (min-width: 1024px) {
+    #error-page {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.error-message {
+    display: flex;
+    flex-direction: column;
 }
