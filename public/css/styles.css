@@ -160,13 +160,14 @@ nav ul {
     padding: 0;
 }
 
-nav li {
+nav li a{
     color: white;
     font-size: 1.2em;
     font-weight: bold;
+    text-decoration: none;
 }
 
-nav li:hover {
+nav li a:hover {
     color: var(--accent-color);
     cursor: pointer;
 }
