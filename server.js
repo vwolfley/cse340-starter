@@ -38,7 +38,6 @@ app.use(async (req, res, next) => {
     const quote = `Sorry, we couldn't find the page you're looking for :-( <br> But you could try any of the pages in the menu-bar.`
     next({ status: 404, message: utilities.buildErrorMessage(heading, quote) })
 })
-
 /* ***********************
  * Express Error Handler
  * Place after all other middleware
