@@ -127,6 +127,7 @@ Util.buildErrorMessage = (heading, quote) => `<section id="error-page">
     </div>
     </section>`
 
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for
