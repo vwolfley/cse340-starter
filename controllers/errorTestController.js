@@ -1,22 +1,10 @@
+const utilities = require('../utilities/')
 
-const utilities = require("../utilities/")
-const testController = {};
+const errorTestController = {}
 
+errorTestController.triggerError = async function (req, res, next) {
+    throw new Error('This is a test error.')
+}
 
-testController.triggerError = async function (req, res, next) {
-  throw new Error();
-};
+module.exports = errorTestController
 
-module.exports = testController;
-
-
-
-// const baseController = {}
-
-// baseController.buildHome = async function(req, res){
-//   const nav = await utilities.getNav()
-//   // req.flash("notice", "This is a flash message.")
-//   res.render("index", {title: "Home", nav})
-// }
-
-// module.exports = baseController

@@ -16,6 +16,7 @@ const baseController = require('./controllers/baseController')
 const static = require('./routes/static')
 const inventoryRoute = require('./routes/inventoryRoute')
 const accountRoute = require('./routes/accountRoute')
+const errorRoute = require('./routes/errorRoute')
 
 /* ***********************
  * Middleware
@@ -58,7 +59,7 @@ app.use('/inv', utilities.handleErrors(inventoryRoute))
 // Account routes
 app.use('/account', utilities.handleErrors(accountRoute))
 // Error routes
-app.use('/error', utilities.handleErrors(baseController.buildError))
+app.use('/error', utilities.handleErrors(errorRoute))
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
