@@ -186,7 +186,7 @@ footer {
 }
 footer a {
     color: var(--primary-color);
-    font-size: .8em;
+    font-size: 0.8em;
 }
 footer a:hover {
     color: var(--accent-color);
@@ -394,4 +394,91 @@ main {
 .error-message {
     display: flex;
     flex-direction: column;
+}
+
+/********** Login Form Stylings ************/
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container {
+    width: 100%;
+    max-width: 500px;
+    background: var(--primary-color);
+    color: white;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.input input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.submit-button button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button button:hover {
+    background-color: #0056b3;
+}
+
+.form-container h3 {
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+}
+
+.form-container h3 a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-container h3 a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .login-container {
+        padding: 15px;
+    }
+
+    /* .input input,
+    .submit-button button {
+        font-size: 14px;
+    } */
 }
