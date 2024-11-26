@@ -402,7 +402,7 @@ main {
     justify-content: center;
     align-items: center;
 }
-.login-container {
+.login-container, .registration-container {
     width: 100%;
     max-width: 500px;
     background: var(--primary-color);
@@ -410,6 +410,16 @@ main {
     padding: 50px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.registration-container p {
+    font-size: .8em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.registration-container ul {
+    font-size: .8em;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .form-container {
@@ -470,6 +480,22 @@ main {
 .form-container h3 a:hover {
     text-decoration: underline;
 }
+.required {
+    color: red;
+}
+
+#passWordBtn {
+    border: 2px solid #000;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 1em;
+    font-size: small;
+    width: 7em;
+    text-align: center;
+    cursor: pointer;
+  }
+  
 
 /* Responsive design */
 @media (max-width: 600px) {
