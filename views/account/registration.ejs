@@ -8,7 +8,7 @@
 
 <div class="container">
     <div class="registration-container">
-        <form id="registrationForm" class="form-container">
+        <form id="registrationForm" class="form-container" action="/account/registration" method="post">
             <div class="input">
                 <label for="account_firstname">First Name<span class="required">*</span></label>
                 <input type="text" id="account_firstname" name="account_firstname" required />
@@ -19,7 +19,15 @@
             </div>
             <div class="input">
                 <label for="account_email">Email<span class="required">*</span></label>
-                <input type="email" id="account_email" name="account_email" required />
+                <input
+                    type="email"
+                    id="account_email"
+                    name="account_email"
+                    required
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    title="Enter a valid email address (e.g., user@example.com)"
+                    placeholder="Enter your email"
+                />
             </div>
             <div class="input">
                 <label for="account_password">Password<span class="required">*</span></label>
@@ -28,6 +36,7 @@
                     id="account_password"
                     name="account_password"
                     required
+                    pattern="(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{12,}"
                     title="Password must be at least 12 characters long and include at least one capital letter, one number, and one special character."
                     placeholder="Enter a secure password"
                 />

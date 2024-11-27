@@ -17,6 +17,7 @@ const static = require('./routes/static')
 const inventoryRoute = require('./routes/inventoryRoute')
 const accountRoute = require('./routes/accountRoute')
 const errorRoute = require('./routes/errorRoute')
+const bodyParser = require('body-parser')
 
 /* ***********************
  * Middleware
@@ -40,6 +41,9 @@ app.use(function (req, res, next) {
     res.locals.messages = require('express-messages')(req, res)
     next()
 })
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 /* ***********************
  * View Engine and Templates
@@ -80,7 +84,7 @@ app.use(async (err, req, res, next) => {
         title = `${err.status} - PAGE NOT FOUND`
         message = err.message
     } else {
-        title = `500 - INTERNAL SERVER ERROR`
+        title = `${res.status} - INTERNAL SERVER ERROR`
         const heading = 'Oh no! There was a crash!'
         const quote = ` Maybe try watching where you are going next time?`
         message = utilities.buildErrorMessage(heading, quote)
