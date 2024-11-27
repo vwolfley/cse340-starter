@@ -456,18 +456,16 @@ main {
 }
 
 .input input:focus {
-    border-color: #007bff;
+    border-color: var(--primary);
     outline: none;
     box-shadow: 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
 form input:required {
-    border: 2px solid var(--danger);
     border-left: 8px solid var(--danger);
 }
 
 form input:required:valid {
-    border: 2px solid var(--success);
     border-left: 8px solid var(--success);
     background-color: var(--success-mute);
 }
@@ -523,6 +521,26 @@ form input:required:focus {
     width: 7em;
     text-align: center;
     cursor: pointer;
+}
+#messages ul{
+    margin: 0;
+}
+
+#messages .success {
+    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    background-color: var(--success-mute);
+}
+#messages .notice {
+    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    background-color: var(--danger-mute);
 }
 
 /* Responsive design */

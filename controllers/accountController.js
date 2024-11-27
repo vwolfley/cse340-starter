@@ -11,6 +11,7 @@ accountController.buildLogin = async function (req, res, next) {
     res.render('./account/login', {
         title: 'Login',
         nav,
+        errors: null,
     })
 }
 
@@ -22,6 +23,7 @@ accountController.buildRegistration = async function (req, res, next) {
     res.render('./account/registration', {
         title: 'Registration',
         nav,
+        errors: null,
     })
 }
 
@@ -40,7 +42,7 @@ accountController.registerAccount = async function (req, res) {
     )
 
     if (regResult) {
-        req.flash('notice', `Congratulations, you\'re registered ${account_firstname}. Please log in.`)
+        req.flash('success', `Congratulations, you\'re registered ${account_firstname}. Please log in.`)
         res.status(201).render('./account/login', {
             title: 'Login',
             nav,
