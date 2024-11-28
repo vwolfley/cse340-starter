@@ -1,0 +1,66 @@
+<!-- **** ADD-INVENTORY **** -->
+
+<!-- Content Heading -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else { res.redirect('/') } %>
+
+<!-- Message Block -->
+<%- messages() %> <% if (errors) { %>
+<ul class="notice">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+</ul>
+<% } %>
+
+<div class="container">
+    <div class="add-class-container">
+        <form id="addInventoryForm" class="form-container" action="/" method="post">
+            <div class="input">
+                <label for="account_email">Classification</label>
+                <input type="text" id="account_email" name="account_email" required />
+            </div>
+            <div class="input">
+                <label for="inv_year">Year</label>
+                <input type="text" id="inv_year" name="inv_year" required />
+            </div>
+            <div class="input">
+                <label for="inv_make">Make</label>
+                <input type="text" id="inv_make" name="inv_make" required />
+            </div>
+            <div class="input">
+                <label for="inv_model">Model</label>
+                <input type="text" id="inv_model" name="inv_model" required />
+            </div>
+            <div class="input">
+                <label for="inv_color">Color</label>
+                <input type="text" id="inv_color" name="inv_color" required />
+            </div>
+            <div class="input">
+                <label for="inv_miles">Milage</label>
+                <input type="text" id="inv_miles" name="inv_miles" required />
+            </div>
+            <div class="input">
+                <label for="inv_price">Price</label>
+                <input type="text" id="inv_price" name="inv_price" required />
+            </div>
+            <div class="input">
+                <label for="inv_description">Description</label>
+                <textarea type="text" id="inv_description" name="inv_description"rows="10" cols="20" required </textarea>
+            </div>
+            <div class="input">
+                <label for="inv_image">Image</label>
+                <input type="file" id="inv_image" name="inv_image" />
+            </div>
+            <div class="input">
+                <label for="inv_thumbnail">Thumbnail Image</label>
+                <input type="file" id="inv_thumbnail" name="inv_thumbnail" />
+            </div>
+
+            <div class="submit-button">
+                <button type="submit">Add Inventory</button>
+            </div>
+        </form>
+    </div>
+</div>
