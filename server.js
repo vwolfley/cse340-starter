@@ -84,7 +84,7 @@ app.use(async (err, req, res, next) => {
         title = `${err.status} - PAGE NOT FOUND`
         message = err.message
     } else {
-        title = `${res.status} - INTERNAL SERVER ERROR`
+        title = `500 - INTERNAL SERVER ERROR`
         const heading = 'Oh no! There was a crash!'
         const quote = ` Maybe try watching where you are going next time?`
         message = utilities.buildErrorMessage(heading, quote)
