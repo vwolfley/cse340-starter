@@ -413,7 +413,8 @@ main {
 }
 .login-container,
 .registration-container,
-.management-container {
+.management-container,
+.add-class-container {
     width: 100%;
     max-width: 500px;
     background: var(--primary-color);
@@ -424,7 +425,8 @@ main {
 }
 .login-container p,
 .registration-container p,
-.management-container p {
+.management-container p,
+.add-class-container p {
     font-size: 0.8em;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -505,7 +507,8 @@ form input:required:focus {
 .submit-button button:hover {
     background-color: var(--secondary-color);
 }
-.submit-button {
+
+a.submit-button {
     width: 100%;
     padding: 12px;
     background-color: var(--accent-color);
@@ -517,7 +520,7 @@ form input:required:focus {
     transition: background-color 0.3s ease;
 }
 
-.submit-button:hover {
+a.submit-button:hover {
     background-color: var(--secondary-color);
 }
 
