@@ -127,6 +127,27 @@ Util.buildErrorMessage = (heading, quote) => `<section id="error-page">
     </div>
     </section>`
 
+/* ************************
+ * Constructs the Classification HTML select dropdown
+ ************************** */
+Util.buildClassificationDropdown = async function (req, res, next) {
+    let data = await invModel.getClassifications()
+    // console.log(data)
+
+    // Initialize the list with the opening <select> tag
+    let option = `<select id="classification_id" name="classification_id" required >
+    <option value="" disabled selected>Select a classification</option>`
+
+    // Loop through the rows and add each classification as an <option>
+    data.rows.forEach((row) => {
+        option += `<option value="${row.classification_id}">${row.classification_name}</option>`
+    })
+
+    option += `</select>`
+
+    return option
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for
