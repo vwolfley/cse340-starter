@@ -28,6 +28,12 @@ router.post(
 // Route to build Add Inventory View
 router.get('/add-inventory', utilities.handleErrors(invController.buildByAddInventory))
 
-
+// Route to handle Add Inventory
+router.post(
+    '/add-inventory',
+    regValidate.inventoryRules(),
+    regValidate.checkInventoryData,
+    utilities.handleErrors(invController.addInventory)
+)
 
 module.exports = router

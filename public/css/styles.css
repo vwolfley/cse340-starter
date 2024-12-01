@@ -463,7 +463,9 @@ main {
     font-size: 0.85em;
 }
 
-.input input {
+.input input,
+.input textarea,
+.input select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -471,21 +473,29 @@ main {
     transition: border-color 0.3s ease;
 }
 
-.input input:focus {
+.input input:focus,
+.input textarea:focus,
+.input select:focus {
     border-color: var(--accent-color);
     outline: none;
     box-shadow: 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
-form input:required {
+form input:required,
+form textarea:required,
+form select:required {
     border-left: 8px solid var(--danger);
 }
 
-form input:required:valid {
+form input:required:valid,
+form textarea:required:valid,
+form select:required:valid {
     border-left: 8px solid var(--success);
     background-color: var(--success-mute);
 }
-form input:required:focus {
+form input:required:focus,
+form textarea:required:focus,
+form select:required:focus {
     outline: none;
     border: 2px solid var(--accent-color);
     border-left: 8px solid var(--accent-color);
@@ -567,6 +577,14 @@ a.submit-button:hover {
     background-color: var(--success-mute);
 }
 #messages .notice {
+    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    background-color: var(--danger-mute);
+}
+.notice {
     margin-bottom: 1em;
     padding: 1em;
     border-radius: 5px;

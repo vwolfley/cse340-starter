@@ -16,46 +16,95 @@
 
 <div class="container">
     <div class="add-class-container">
-        <form id="addInventoryForm" class="form-container" action="/" method="post">
+        <form id="addInventoryForm" class="form-container" action="/inv/add-inventory" method="post">
             <div class="input">
-                <label for="account_email">Classification</label>
-                <input type="text" id="account_email" name="account_email" required />
+                <label for="classification_id">Classification</label>
+                <%- dropdown %>
             </div>
             <div class="input">
                 <label for="inv_year">Year</label>
-                <input type="text" id="inv_year" name="inv_year" required />
+                <input
+                    type="text"
+                    id="inv_year"
+                    name="inv_year"
+                    pattern="^[0-9]{4}$"
+                    maxlength="4"
+                    placeholder="Enter 4-digit year"
+                    title="Please enter a valid 4-digit year"
+                    required
+                />
             </div>
             <div class="input">
                 <label for="inv_make">Make</label>
-                <input type="text" id="inv_make" name="inv_make" required />
+                <input
+                    type="text"
+                    id="inv_make"
+                    name="inv_make"
+                    minlength="3"
+                    placeholder="Min of 3 characters"
+                    title="Please enter a Make"
+                    required
+                />
             </div>
             <div class="input">
                 <label for="inv_model">Model</label>
-                <input type="text" id="inv_model" name="inv_model" required />
+                <input
+                    type="text"
+                    id="inv_model"
+                    name="inv_model"
+                    minlength="3"
+                    placeholder="Min of 3 characters"
+                    title="Please enter a model"
+                    required
+                />
             </div>
             <div class="input">
                 <label for="inv_color">Color</label>
-                <input type="text" id="inv_color" name="inv_color" required />
+                <input type="text" id="inv_color" name="inv_color" title="Please enter a color" required />
             </div>
             <div class="input">
                 <label for="inv_miles">Milage</label>
-                <input type="text" id="inv_miles" name="inv_miles" required />
+                <input
+                    type="text"
+                    id="inv_miles"
+                    name="inv_miles"
+                    pattern="[0-9]*"
+                    placeholder="Enter mileage numbers only"
+                    title="Please enter a valid mileage - numbers only."
+                    required
+                />
             </div>
             <div class="input">
                 <label for="inv_price">Price</label>
-                <input type="text" id="inv_price" name="inv_price" required />
+                <input
+                    type="text"
+                    id="inv_price"
+                    name="inv_price"
+                    pattern="[0-9]*"
+                    placeholder="Enter price numbers only"
+                    title="Please enter a valid price numbers only."
+                    required
+                />
             </div>
             <div class="input">
                 <label for="inv_description">Description</label>
-                <textarea type="text" id="inv_description" name="inv_description"rows="10" cols="20" required </textarea>
+                <textarea
+                    id="inv_description"
+                    name="inv_description"
+                    style="width: 400px; height: 150px"
+                    placeholder="Add description here...."
+                    title="Please enter a description."
+                    required
+                ></textarea>
+            </div>
+
+            <div class="input">
+                <label for="inv_image">Add Image</label>
+                <input type="text" id="inv_image" name="inv_image" value="/images/vehicles/no-image.png" />
             </div>
             <div class="input">
-                <label for="inv_image">Image</label>
-                <input type="file" id="inv_image" name="inv_image" />
-            </div>
-            <div class="input">
-                <label for="inv_thumbnail">Thumbnail Image</label>
-                <input type="file" id="inv_thumbnail" name="inv_thumbnail" />
+                <label for="inv_thumbnail">Add Thumbnail Image</label>
+                <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="/images/vehicles/no-image-tn.png" />
             </div>
 
             <div class="submit-button">
