@@ -61,16 +61,18 @@ validate.inventoryRules = () => {
             .trim()
             .escape()
             .notEmpty()
-            .isLength({ min: 4, max: 4 }) // Ensure exactly 4 characters
-            .matches(/^\d{4}$/) // Matches exactly 4 numeric digits
-            .withMessage('Year must be a 4-digit number.'),
+            .withMessage('Year is required.')
+            .isNumeric()
+            .withMessage('Year must contain only numbers.')
+            .isLength({ min: 4, max: 4 })
+            .withMessage('Year must be exactly 4 digits.'),
 
         // make is required
         body('inv_make')
             .trim()
             .escape()
             .notEmpty()
-            .isLength({ min: 3 })
+            .isLength({ min: 2 })
             .withMessage('Please enter a valid make.')
             .customSanitizer((inv_make) => {
                 // Capitalize the first letter of each word
@@ -111,20 +113,22 @@ validate.inventoryRules = () => {
             .trim()
             .escape()
             .notEmpty()
+            .withMessage('Miles is required.')
             .isNumeric()
             .withMessage('Miles must be a number.')
-            .matches(/^\d{3,}$/) // Matches only digits with a minimum of 3
-            .withMessage('Miles must be a number with at least 3 digits.'),
+            .isLength({ min: 3 })
+            .withMessage('Miles must have at least 3 digits.'),
 
         // price is required and must be a number with at least 3 digits
         body('inv_price')
             .trim()
             .escape()
             .notEmpty()
+            .withMessage('Price is required.')
             .isNumeric()
-            .withMessage('Miles must be a number.')
-            .matches(/^\d{3,}$/) // Matches only digits with a minimum of 3
-            .withMessage('Price must be a number with at least 3 digits.'),
+            .withMessage('Price must be a number.')
+            .isLength({ min: 3 })
+            .withMessage('Price must have at least 3 digits.'),
 
         // description is required
         body('inv_description').trim().escape().notEmpty().withMessage('Description must not be empty.'),
@@ -135,23 +139,18 @@ validate.inventoryRules = () => {
  * Check data and return errors or continue to next
  * ***************************** */
 validate.checkInventoryData = async (req, res, next) => {
-    const { inv_year, inv_make, inv_model, inv_color, inv_miles, inv_price, inv_description } =
-        req.body
+    const { classification_id } = req.body
     let errors = []
     errors = validationResult(req)
     if (!errors.isEmpty()) {
         let nav = await utilities.getNav()
+        let dropdown = await utilities.buildClassificationDropdown()
         res.render('inventory/add-inventory', {
             errors,
             title: 'Add Inventory Management',
             nav,
-            inv_year,
-            inv_make,
-            inv_model,
-            inv_color,
-            inv_miles,
-            inv_price,
-            inv_description,
+            dropdown,
+            classification_id,
         })
         return
     }

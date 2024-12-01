@@ -128,8 +128,10 @@ invCont.addInventory = async function (req, res, next) {
         inv_thumbnail,
         classification_id
     )
-
+    
     let nav = await utilities.getNav()
+    let dropdown = await utilities.buildClassificationDropdown()
+
     if (regResult) {
         req.flash('success', `Success, ${inv_year} ${inv_make} ${inv_model} has been added to the database.`)
         res.status(201).render('./inventory/management', {
@@ -142,6 +144,7 @@ invCont.addInventory = async function (req, res, next) {
         res.status(501).render('./inventory/add-inventory', {
             title: 'Add Inventory Management',
             nav,
+            dropdown,
             errors: null,
         })
     }

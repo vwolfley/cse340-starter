@@ -31,6 +31,7 @@
                     maxlength="4"
                     placeholder="Enter 4-digit year"
                     title="Please enter a valid 4-digit year"
+                    value="<%= locals.inv_year %>"
                     required
                 />
             </div>
@@ -43,6 +44,7 @@
                     minlength="3"
                     placeholder="Min of 3 characters"
                     title="Please enter a Make"
+                    value="<%= locals.inv_make %>"
                     required
                 />
             </div>
@@ -55,12 +57,13 @@
                     minlength="3"
                     placeholder="Min of 3 characters"
                     title="Please enter a model"
+                    value="<%= locals.inv_model %>"
                     required
                 />
             </div>
             <div class="input">
                 <label for="inv_color">Color</label>
-                <input type="text" id="inv_color" name="inv_color" title="Please enter a color" required />
+                <input type="text" id="inv_color" name="inv_color" title="Please enter a color" value="<%= locals.inv_color %>" required />
             </div>
             <div class="input">
                 <label for="inv_miles">Milage</label>
@@ -71,6 +74,7 @@
                     pattern="[0-9]*"
                     placeholder="Enter mileage numbers only"
                     title="Please enter a valid mileage - numbers only."
+                    value="<%= locals.inv_miles %>"
                     required
                 />
             </div>
@@ -83,6 +87,7 @@
                     pattern="[0-9]*"
                     placeholder="Enter price numbers only"
                     title="Please enter a valid price numbers only."
+                    value="<%= locals.inv_price %>"
                     required
                 />
             </div>
@@ -94,6 +99,7 @@
                     style="width: 400px; height: 150px"
                     placeholder="Add description here...."
                     title="Please enter a description."
+                    value="<%= locals.inv_description %>"
                     required
                 ></textarea>
             </div>
