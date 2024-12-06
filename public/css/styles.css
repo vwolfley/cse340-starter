@@ -416,7 +416,8 @@ main {
 .login-container,
 .registration-container,
 .management-container,
-.add-class-container {
+.add-class-container,
+.edit-class-container {
     width: 100%;
     max-width: 500px;
     background: var(--primary-color);
