@@ -408,8 +408,10 @@ main {
 /********** Login Form Stylings ************/
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 .login-container,
 .registration-container,
@@ -422,6 +424,14 @@ main {
     padding: 50px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.management-container h2{
+    margin: 0;
+}
+
+.management-container .input {
+    width: 100%;
 }
 .login-container p,
 .registration-container p,
@@ -551,6 +561,11 @@ a.submit-button:hover {
 }
 .required {
     color: var(--danger);
+}
+
+#inventoryDisplay{
+    background-color: var(--light-grey);
+    color: var(--secondary-color);
 }
 
 #passWordBtn {
