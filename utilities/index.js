@@ -138,7 +138,7 @@ Util.buildClassificationDropdown = async function (classification_id) {
     // console.log(data)
 
     // Initialize the list with the opening <select> tag
-    let option = `<select id="classification_id" name="classification_id" value="<%= locals.classification_id %>" autofocus required >
+    let option = `<select id="classification_id" name="classification_id" autofocus required >
     <option value="" disabled selected>Select a classification</option>`
 
     // Loop through the rows and add each classification as an <option>

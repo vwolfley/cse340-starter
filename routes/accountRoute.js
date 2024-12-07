@@ -30,4 +30,12 @@ router.post(
 // Route to build Account Management View
 router.get('/', utilities.checkLogin, utilities.handleErrors(accountController.buildManagement))
 
+
+// app.get('/', (req, res) => {
+//     const clientLoggedIn = req.session.isLoggedIn || false; // Example check
+//     const clientName = req.session.clientName || 'Guest';   // Example name
+//     res.render('header', { clientLoggedIn, clientName });
+//   });
+  
+
 module.exports = router

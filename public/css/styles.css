@@ -435,6 +435,23 @@ main {
     padding: 10px;
 }
 
+.registration-container h2 {
+    margin: 5px 0;
+}
+
+.registration-container h3 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.registration-container h4 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.registration-container hr {
+    margin: 25px 0;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .login-container,
@@ -483,10 +500,6 @@ main {
     justify-content: center;
     align-items: center;
     gap: 20px;
-}
-.management-container a {
-    text-decoration: none;
-    text-align: center;
 }
 
 .form-container {
@@ -573,6 +586,8 @@ a.submit-button {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
 }
 
 a.submit-button:hover {
