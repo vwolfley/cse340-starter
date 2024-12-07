@@ -133,17 +133,18 @@ Util.buildErrorMessage = (heading, quote) => `<section id="error-page">
 /* ************************
  * Constructs the Classification HTML select dropdown
  ************************** */
-Util.buildClassificationDropdown = async function (req, res, next) {
+Util.buildClassificationDropdown = async function (classification_id) {
     let data = await invModel.getClassifications()
     // console.log(data)
 
     // Initialize the list with the opening <select> tag
-    let option = `<select id="classification_id" name="classification_id" value="<%= locals.classification_id %>" required >
+    let option = `<select id="classification_id" name="classification_id" value="<%= locals.classification_id %>" autofocus required >
     <option value="" disabled selected>Select a classification</option>`
 
     // Loop through the rows and add each classification as an <option>
     data.rows.forEach((row) => {
-        option += `<option value="${row.classification_id}">${row.classification_name}</option>`
+        const isSelected = classification_id === row.classification_id ? 'selected' : ''
+        option += `<option value="${row.classification_id}" ${isSelected}>${row.classification_name}</option>`
     })
 
     option += `</select>`
