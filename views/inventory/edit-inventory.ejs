@@ -1,4 +1,4 @@
-<!-- **** ADD-INVENTORY **** -->
+<!-- **** Edit-INVENTORY **** -->
 
 <!-- Content Heading -->
 <% if (title) { %>
@@ -15,14 +15,14 @@
 <% } %>
 
 <div class="container">
-    <div class="add-class-container">
-        <form id="addInventoryForm" class="form-container" action="/inv/add-inventory" method="post">
+    <div class="edit-class-container">
+        <form id="updateForm" class="form-container" action="/inv/update" method="post">
             <div class="input">
-                <label for="classification_id">Classification</label>
-                <%- dropdown %>
+                <label for="classification_id">Edit Classification</label>
+                <%- classificationSelect %>
             </div>
             <div class="input">
-                <label for="inv_year">Year</label>
+                <label for="inv_year">Edit Year</label>
                 <input
                     type="text"
                     id="inv_year"
@@ -36,7 +36,7 @@
                 />
             </div>
             <div class="input">
-                <label for="inv_make">Make</label>
+                <label for="inv_make">Edit Make</label>
                 <input
                     type="text"
                     id="inv_make"
@@ -49,7 +49,7 @@
                 />
             </div>
             <div class="input">
-                <label for="inv_model">Model</label>
+                <label for="inv_model">Edit Model</label>
                 <input
                     type="text"
                     id="inv_model"
@@ -62,11 +62,18 @@
                 />
             </div>
             <div class="input">
-                <label for="inv_color">Color</label>
-                <input type="text" id="inv_color" name="inv_color" title="Please enter a color" value="<%= locals.inv_color %>" required />
+                <label for="inv_color">Edit Color</label>
+                <input
+                    type="text"
+                    id="inv_color"
+                    name="inv_color"
+                    title="Please enter a color"
+                    value="<%= locals.inv_color %>"
+                    required
+                />
             </div>
             <div class="input">
-                <label for="inv_miles">Milage</label>
+                <label for="inv_miles">Edit Milage</label>
                 <input
                     type="text"
                     id="inv_miles"
@@ -79,7 +86,7 @@
                 />
             </div>
             <div class="input">
-                <label for="inv_price">Price</label>
+                <label for="inv_price">Edit Price</label>
                 <input
                     type="text"
                     id="inv_price"
@@ -92,7 +99,7 @@
                 />
             </div>
             <div class="input">
-                <label for="inv_description">Description</label>
+                <label for="inv_description">Edit Description</label>
                 <textarea
                     id="inv_description"
                     name="inv_description"
@@ -100,21 +107,27 @@
                     placeholder="Add description here...."
                     title="Please enter a description."
                     required
-                ><%= locals.inv_description %></textarea>
+                >
+<%= locals.inv_description %></textarea
+                >
             </div>
 
             <div class="input">
-                <label for="inv_image">Add Image</label>
-                <input type="text" id="inv_image" name="inv_image" value="/images/vehicles/no-image.png" />
+                <label for="inv_image">Edit Image</label>
+                <input type="text" id="inv_image" name="inv_image" value="<%= locals.inv_image %>" />
             </div>
             <div class="input">
-                <label for="inv_thumbnail">Add Thumbnail Image</label>
-                <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="/images/vehicles/no-image-tn.png" />
+                <label for="inv_thumbnail">Edit Thumbnail Image</label>
+                <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="<%= locals.inv_thumbnail %>" />
             </div>
 
             <div class="submit-button">
-                <button type="submit">Add Inventory</button>
+                <button type="submit" disabled>Update Vehicle</button>
             </div>
+            <input type="hidden" name="inv_id" <% if (locals.inv_id) { %> value="<%= locals.inv_id %>" <% } %>>
+
         </form>
     </div>
 </div>
+
+<script src="/js/inv-update.js"></script>

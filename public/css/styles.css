@@ -408,13 +408,16 @@ main {
 /********** Login Form Stylings ************/
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 .login-container,
 .registration-container,
 .management-container,
-.add-class-container {
+.add-class-container,
+.edit-class-container {
     width: 100%;
     max-width: 500px;
     background: var(--primary-color);
@@ -422,6 +425,14 @@ main {
     padding: 50px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.management-container h2{
+    margin: 0;
+}
+
+.management-container .input {
+    width: 100%;
 }
 .login-container p,
 .registration-container p,
@@ -534,6 +545,12 @@ a.submit-button:hover {
     background-color: var(--secondary-color);
 }
 
+.submit-button button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
 .form-container h3 {
     text-align: center;
     margin-top: 10px;
@@ -551,6 +568,11 @@ a.submit-button:hover {
 }
 .required {
     color: var(--danger);
+}
+
+#inventoryDisplay{
+    background-color: var(--light-grey);
+    color: var(--secondary-color);
 }
 
 #passWordBtn {

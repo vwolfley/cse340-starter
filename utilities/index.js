@@ -1,4 +1,7 @@
 const invModel = require('../models/inventory-model')
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
+
 const Util = {}
 
 /* ************************
@@ -130,22 +133,55 @@ Util.buildErrorMessage = (heading, quote) => `<section id="error-page">
 /* ************************
  * Constructs the Classification HTML select dropdown
  ************************** */
-Util.buildClassificationDropdown = async function (req, res, next) {
+Util.buildClassificationDropdown = async function (classification_id) {
     let data = await invModel.getClassifications()
     // console.log(data)
 
     // Initialize the list with the opening <select> tag
-    let option = `<select id="classification_id" name="classification_id" value="<%= locals.classification_id %>" required >
+    let option = `<select id="classification_id" name="classification_id" value="<%= locals.classification_id %>" autofocus required >
     <option value="" disabled selected>Select a classification</option>`
 
     // Loop through the rows and add each classification as an <option>
     data.rows.forEach((row) => {
-        option += `<option value="${row.classification_id}">${row.classification_name}</option>`
+        const isSelected = classification_id === row.classification_id ? 'selected' : ''
+        option += `<option value="${row.classification_id}" ${isSelected}>${row.classification_name}</option>`
     })
 
     option += `</select>`
 
     return option
+}
+
+/* ****************************************
+ * Middleware to check token validity
+ **************************************** */
+Util.checkJWTToken = (req, res, next) => {
+    if (req.cookies.jwt) {
+        jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET, function (err, accountData) {
+            if (err) {
+                req.flash('Please log in')
+                res.clearCookie('jwt')
+                return res.redirect('/account/login')
+            }
+            res.locals.accountData = accountData
+            res.locals.loggedin = 1
+            next()
+        })
+    } else {
+        next()
+    }
+}
+
+/* ****************************************
+ *  Check Login
+ * ************************************ */
+Util.checkLogin = (req, res, next) => {
+    if (res.locals.loggedin) {
+        next()
+    } else {
+        req.flash('notice', 'Please log in.')
+        return res.redirect('/account/login')
+    }
 }
 
 /* ****************************************
