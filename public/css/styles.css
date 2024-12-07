@@ -18,6 +18,7 @@
     --success-mute: #c3e6cb;
     --danger: #d9534f;
     --danger-mute: #eca9a7;
+    --danger-dark: #c9302c;
     --warning: #f0ad4e;
     --warning-mute: #fcf8e3;
     --primary: #0275d8;
@@ -413,6 +414,7 @@ main {
     align-items: center;
     gap: 20px;
 }
+
 .login-container,
 .registration-container,
 .management-container,
@@ -426,8 +428,34 @@ main {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.edit-class-container h4 {
+    text-align: center;
+    background-color: var(--danger);
+    margin-top: 0;
+    padding: 10px;
+}
 
-.management-container h2{
+/* Responsive design */
+@media (max-width: 768px) {
+    .login-container,
+    .registration-container,
+    .management-container,
+    .add-class-container,
+    .edit-class-container {
+        padding: 15px;
+    }
+}
+@media (min-width: 1024px) {
+    .login-container,
+    .registration-container,
+    .management-container,
+    .add-class-container,
+    .edit-class-container {
+        max-width: 700px;
+    }
+}
+
+.management-container h2 {
     margin: 0;
 }
 
@@ -524,6 +552,12 @@ form select:required:focus {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+.submit-button button.delete {
+    background-color: var(--danger);
+}
+.submit-button button.delete:hover {
+    background-color: var(--danger-dark);
+}
 
 .submit-button button:hover {
     background-color: var(--secondary-color);
@@ -550,6 +584,29 @@ a.submit-button:hover {
     cursor: not-allowed;
 }
 
+.btn-mod {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-del {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--danger);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
 .form-container h3 {
     text-align: center;
@@ -570,9 +627,15 @@ a.submit-button:hover {
     color: var(--danger);
 }
 
-#inventoryDisplay{
+#inventoryDisplay {
+    width: 100%;
     background-color: var(--light-grey);
     color: var(--secondary-color);
+}
+#inventoryDisplay th,
+#inventoryDisplay td {
+    margin: 10px 0;
+    padding: 10px 0;
 }
 
 #passWordBtn {
@@ -613,16 +676,4 @@ a.submit-button:hover {
     font-size: 0.9em;
     font-weight: 600;
     background-color: var(--danger-mute);
-}
-
-/* Responsive design */
-@media (max-width: 600px) {
-    .login-container {
-        padding: 15px;
-    }
-
-    /* .input input,
-    .submit-button button {
-        font-size: 14px;
-    } */
 }
