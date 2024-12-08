@@ -12,7 +12,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
     const grid = await utilities.buildClassificationGrid(data)
     let nav = await utilities.getNav()
     const className = data[0].classification_name
-    res.render('./inventory/classification', {
+    res.render('inventory/classification', {
         title: className + ' vehicles',
         nav,
         grid,
@@ -28,7 +28,7 @@ invCont.buildByInventoryID = async function (req, res, next) {
     const grid = await utilities.buildDetailsGrid(data)
     let nav = await utilities.getNav()
     const className = `${data[0].inv_year} ${data[0].inv_make} ${data[0].inv_model}`
-    res.render('./inventory/details', {
+    res.render('inventory/details', {
         title: className,
         nav,
         grid,
@@ -41,7 +41,7 @@ invCont.buildByInventoryID = async function (req, res, next) {
 invCont.buildByInvManagement = async function (req, res, next) {
     let nav = await utilities.getNav()
     const classificationSelect = await utilities.buildClassificationDropdown()
-    res.render('./inventory/management', {
+    res.render('inventory/management', {
         title: 'Inventory Management',
         nav,
         errors: null,
@@ -54,7 +54,7 @@ invCont.buildByInvManagement = async function (req, res, next) {
  * ************************** */
 invCont.buildByAddClassification = async function (req, res, next) {
     let nav = await utilities.getNav()
-    res.render('./inventory/add-classification', {
+    res.render('inventory/add-classification', {
         title: 'Add Classification Management',
         nav,
         errors: null,
@@ -71,7 +71,7 @@ invCont.addClassification = async function (req, res, next) {
 
     if (regResult) {
         req.flash('success', `Success, ${classification_name} has been added to the database.`)
-        res.status(201).render('./inventory/management', {
+        res.status(201).render('inventory/management', {
             title: 'Inventory Management',
             nav,
             errors: null,
@@ -92,7 +92,7 @@ invCont.addClassification = async function (req, res, next) {
 invCont.buildByAddInventory = async function (req, res, next) {
     const classificationSelect = await utilities.buildClassificationDropdown()
     let nav = await utilities.getNav()
-    res.render('./inventory/add-inventory', {
+    res.render('inventory/add-inventory', {
         title: 'Add Inventory Management',
         nav,
         classificationSelect,
@@ -136,7 +136,7 @@ invCont.addInventory = async function (req, res, next) {
 
     if (regResult) {
         req.flash('success', `Success, ${inv_year} ${inv_make} ${inv_model} has been added to the database.`)
-        res.status(201).render('./inventory/management', {
+        res.status(201).render('inventory/management', {
             title: 'Inventory Management',
             nav,
             classificationSelect,
@@ -144,7 +144,7 @@ invCont.addInventory = async function (req, res, next) {
         })
     } else {
         req.flash('notice', 'Sorry, adding inventory failed.')
-        res.status(501).render('./inventory/add-inventory', {
+        res.status(501).render('inventory/add-inventory', {
             title: 'Add Inventory Management',
             nav,
             classificationSelect,
@@ -175,7 +175,7 @@ invCont.buildByEditInventory = async (req, res, next) => {
     const classificationSelect = await utilities.buildClassificationDropdown(itemData[0].classification_id)
     let nav = await utilities.getNav()
     const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
-    res.render('./inventory/edit-inventory', {
+    res.render('inventory/edit-inventory', {
         title: `Edit Inventory - ${itemName}`,
         nav,
         classificationSelect: classificationSelect,
@@ -262,7 +262,7 @@ invCont.buildByDeleteInventory = async (req, res, next) => {
     const itemData = await invModel.getInventoryById(inv_id)
     let nav = await utilities.getNav()
     const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
-    res.render('./inventory/delete-confirm', {
+    res.render('inventory/delete-confirm', {
         title: `Delete Inventory - ${itemName}`,
         nav,
         errors: null,

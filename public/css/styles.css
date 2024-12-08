@@ -419,7 +419,7 @@ main {
 .registration-container,
 .management-container,
 .add-class-container,
-.edit-class-container {
+.edit-class-container  {
     width: 100%;
     max-width: 500px;
     background: var(--primary-color);
@@ -427,6 +427,14 @@ main {
     padding: 50px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.registration-container  {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.management {
+    gap: 5px;
 }
 .edit-class-container h4 {
     text-align: center;
@@ -503,6 +511,11 @@ main {
 }
 
 .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form-container fieldset {
     display: flex;
     flex-direction: column;
     gap: 15px;
