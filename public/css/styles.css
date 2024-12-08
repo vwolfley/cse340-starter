@@ -419,7 +419,7 @@ main {
 .registration-container,
 .management-container,
 .add-class-container,
-.edit-class-container {
+.edit-class-container  {
     width: 100%;
     max-width: 500px;
     background: var(--primary-color);
@@ -428,11 +428,36 @@ main {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.registration-container  {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.management {
+    gap: 5px;
+}
 .edit-class-container h4 {
     text-align: center;
     background-color: var(--danger);
     margin-top: 0;
     padding: 10px;
+}
+
+.registration-container h2 {
+    margin: 5px 0;
+}
+
+.registration-container h3 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.registration-container h4 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.registration-container hr {
+    margin: 25px 0;
 }
 
 /* Responsive design */
@@ -484,12 +509,13 @@ main {
     align-items: center;
     gap: 20px;
 }
-.management-container a {
-    text-decoration: none;
-    text-align: center;
-}
 
 .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.form-container fieldset {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -573,6 +599,8 @@ a.submit-button {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
 }
 
 a.submit-button:hover {

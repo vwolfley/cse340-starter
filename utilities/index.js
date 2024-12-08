@@ -138,7 +138,7 @@ Util.buildClassificationDropdown = async function (classification_id) {
     // console.log(data)
 
     // Initialize the list with the opening <select> tag
-    let option = `<select id="classification_id" name="classification_id" value="<%= locals.classification_id %>" autofocus required >
+    let option = `<select id="classification_id" name="classification_id" autofocus required >
     <option value="" disabled selected>Select a classification</option>`
 
     // Loop through the rows and add each classification as an <option>
@@ -182,6 +182,58 @@ Util.checkLogin = (req, res, next) => {
         req.flash('notice', 'Please log in.')
         return res.redirect('/account/login')
     }
+}
+
+/* ****************************************
+ * Middleware to check account type for access
+ **************************************** */
+Util.checkAccountType = (req, res, next) => {
+    const redirectToLogin = (message) => {
+        req.flash('notice', message)
+        // res.clearCookie("jwt");
+        return res.redirect('/account/login')
+    }
+
+    const verifyToken = (token) => {
+        return new Promise((resolve, reject) => {
+            jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, accountData) => {
+                if (err) return reject(err)
+                resolve(accountData)
+            })
+        })
+    }
+
+    if (!req.cookies.jwt) {
+        return redirectToLogin('You are not logged in. Please log in to access this page.')
+    }
+
+    verifyToken(req.cookies.jwt)
+        .then((accountData) => {
+            const { account_type, account_firstname } = accountData
+
+            if (account_type === 'admin' || account_type === 'employee') {
+                req.flash(
+                    'success',
+                    `Welcome back, ${account_firstname}! You are successfully logged in as an ${account_type}.`
+                )
+                res.locals.accountData = accountData
+                res.locals.loggedin = true
+                return next()
+            }
+
+            if (account_type === 'client') {
+                return redirectToLogin(
+                    `Sorry, ${account_firstname}. You must be logged in as an Employee or Admin to access this page.`
+                )
+            }
+
+            // Handle unexpected account types
+            return redirectToLogin('Your account type is not authorized to access this page. Please contact support.')
+        })
+        .catch((err) => {
+            console.error('JWT verification error:', err)
+            return redirectToLogin('Your session has expired or is invalid. Please log in again.')
+        })
 }
 
 /* ****************************************
