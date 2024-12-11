@@ -60,4 +60,7 @@ router.get('/delete/:inventoryId', utilities.checkAccountType, utilities.handleE
 // Route to handle Delete Inventory
 router.post('/delete/', utilities.handleErrors(invController.deleteInventory))
 
+// Route to handle Add Customer Review
+router.post('/add-review/', utilities.checkLogin, utilities.handleErrors(invController.addCustomerReview))
+
 module.exports = router

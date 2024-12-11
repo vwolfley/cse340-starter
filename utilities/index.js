@@ -237,6 +237,38 @@ Util.checkAccountType = (req, res, next) => {
 }
 
 /* ****************************************
+ * Build view for reviews
+ **************************************** */
+Util.buildReviews = async function (data) {
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      };
+
+    if(data.length === 0) {
+        return '<p class="zero-review">Be the first to write a review for this vehicle.</p>'
+    }
+    
+    let reviewList = '<ul class="review-list">'
+    data.forEach((row) => {
+        const firstInitial = row.account_firstname ?
+        row.account_firstname.charAt(0).toUpperCase() : ''; const lastName = row.account_lastname ?
+        row.account_lastname : ''; const screenName = `${firstInitial}${lastName}`;
+        reviewList += `
+        <li>
+            <article class="review-display">
+                <p><strong>${screenName}</strong> wrote on ${row.review_date.toLocaleDateString("en-US", options)}</p>
+                <hr/>
+                <p>${row.review_text}</p>
+            </article>
+        </li>`
+    })
+    reviewList += '</ul>'
+    return reviewList
+}
+
+/* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for
  * General Error Handling
