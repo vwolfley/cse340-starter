@@ -1,4 +1,4 @@
-<!-- **** Edit-Review **** -->
+<!-- **** Delete-Review **** -->
 
 <!-- Content Heading -->
 <% if (title) { %>
@@ -16,7 +16,8 @@
     
     <div class="container">
         <div class="edit-class-container">
-            <form id="updateReviewForm" class="form-container" action="/review/update-review" method="post">
+            <h4>Confirm Deletion - The delete is permanent.</h4>
+            <form id="deleteReviewForm" class="form-container" action="/review/delete-review" method="post">
                
                 <div class="input">
                     <label for="review_date">Review Date</label>
@@ -34,19 +35,15 @@
                         id="review_text"
                         name="review_text"
                         style="height: 150px"
-                        placeholder="Add review here...."
-                        title="Please enter your review."
-                        required
+                        readonly 
                     ><%= locals.review_text %></textarea>
                 </div>
 
                 <div class="submit-button">
-                    <button type="submit" disabled>Update Review</button>
+                    <button type="submit" class="delete">Delete Review</button>
                 </div>
                 <input type="hidden" name="review_id" <% if (locals.review_id) { %> value="<%= locals.review_id %>" <% } %>>
     
             </form>
         </div>
     </div>
-
-    <script src="/js/review-update.js"></script>

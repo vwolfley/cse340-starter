@@ -627,28 +627,30 @@ a.submit-button:hover {
 .btn-mod {
     width: 100%;
     padding: 12px;
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
     color: #fff;
 }
 
 .btn-del {
     width: 100%;
     padding: 12px;
-    background-color: var(--danger);
+    background-color: var(--danger-dark);
     color: #fff;
 }
 .btn-mod-auto {
     width: auto;
-    padding: 8px;
-    background-color: var(--accent-color);
+    padding: 4px 8px;
+    background-color: var(--primary-color);
     color: #fff;
+    font-size: .8em;
 }
 
 .btn-del-auto {
     width: auto;
-    padding: 8px;
-    background-color: var(--danger);
+    padding: 4px 8px;
+    background-color: var(--danger-dark);
     color: #fff;
+    font-size: .8em;
 }
 
 .form-container h3 {
@@ -771,6 +773,10 @@ a.submit-button:hover {
 .my-review-display p {
     margin: 0;
 }
+.review-display p:first-of-type {
+    color: var(--medium-grey);
+}
+
 .review-display hr {
     margin: 1px 0;
     border-width: 2px;
@@ -778,7 +784,7 @@ a.submit-button:hover {
 
 @media (max-width: 1024px) {
     .my-review-display {
-        font-size: .8em;
+        font-size: 0.8em;
     }
 }
 /* @media (min-width: 1024px) {

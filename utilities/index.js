@@ -268,6 +268,8 @@ Util.buildReviews = async function (data) {
     return reviewList
 }
 
+
+
 /* ****************************************
  * Build view for My reviews - account management page
  **************************************** */
@@ -289,8 +291,8 @@ Util.buildMyReviews = async function (data) {
             <article class="my-review-display">
                 <p>Reviewed the <strong>${row.inv_year} ${row.inv_make} ${row.inv_model}</strong> on ${row.review_date.toLocaleDateString("en-US", options)}</p>
                 <div class="my-review-links">
-                <a href='/edit-review/${row.review_id}' class='btn btn-mod-auto' title='Click to update'>Edit</a>
-                <a href='/delete/${row.review_id}' class='btn btn-del-auto' title='Click to delete'>Delete</a>
+                <a href='/review/edit-review/${row.review_id}' class='btn btn-mod-auto' title='Click to update'>Edit</a>
+                <a href='/review/delete-review/${row.review_id}' class='btn btn-del-auto' title='Click to delete'>Delete</a>
                 </div>
             </article>
         </li>`

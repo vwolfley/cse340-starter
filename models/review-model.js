@@ -41,6 +41,23 @@ async function getReviewsByIdOnly(account_id) {
 }
 
 /* ***************************
+ *  Get all Reviews by review_id
+ * ************************** */
+async function getReviewsByReviewID(review_id) {
+    try {
+        const sql = `SELECT * 
+            FROM public.review AS i
+            JOIN public.inventory AS c 
+            ON i.inv_id = c.inv_id
+            WHERE i.review_id = $1`
+        const data = await pool.query(sql, [review_id])
+        return data.rows
+    } catch (error) {
+        console.error('getReviewsById error ' + error)
+    }
+}
+
+/* ***************************
  *  Add a new Review to the database
  * ************************** */
 async function addCustomerReview(inv_id, account_id, review_text) {
@@ -56,13 +73,26 @@ async function addCustomerReview(inv_id, account_id, review_text) {
 /* ***************************
  *  Edit/Update Reviews to the database
  * ************************** */
-async function updateReviews(review_text, account_id, inv_id) {
+async function updateReviews(review_text, review_id) {
     try {
-        const sql = 'UPDATE review SET review_text = $1 WHERE account_id = $2 AND inv_id = $3 RETURNING *'
-        const data = await pool.query(sql, [review_text, account_id, inv_id])
+        const sql = 'UPDATE review SET review_text = $1 WHERE review_id = $2 RETURNING *'
+        const data = await pool.query(sql, [review_text, review_id])
         return data.rows[0]
     } catch (error) {
         console.error('model error: ' + error)
+    }
+}
+
+/* ***************************
+ *  Delete Review to the database
+ * ************************** */
+async function deleteReview(review_id) {
+    try {
+        const sql = 'DELETE FROM review WHERE review_id = $1'
+        const data = await pool.query(sql, [review_id])
+        return data
+    } catch (error) {
+        new Error('Delete Inventory Error')
     }
 }
 
@@ -70,5 +100,7 @@ module.exports = {
     getReviewsById,
     addCustomerReview,
     getReviewsByIdOnly,
+    getReviewsByReviewID,
     updateReviews,
+    deleteReview
 }

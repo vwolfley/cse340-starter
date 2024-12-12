@@ -56,28 +56,14 @@ router.post(
 )
 
 // Route to build Delete Inventory View
-router.get('/delete/:inventoryId', utilities.checkAccountType, utilities.handleErrors(invController.buildByDeleteInventory))
+router.get(
+    '/delete/:inventoryId',
+    utilities.checkAccountType,
+    utilities.handleErrors(invController.buildByDeleteInventory)
+)
 
 // Route to handle Delete Inventory
 router.post('/delete/', utilities.handleErrors(invController.deleteInventory))
 
-/* ****************************************
- *  Review Routes
- * *************************************** */
-
-// Route to handle Add Customer Review
-router.post('/add-review/', utilities.checkLogin, utilities.handleErrors(revController.addCustomerReview))
-
-// Route to build Edit Review View
-router.get('/edit-review/:reviewId', utilities.checkLogin, utilities.handleErrors(revController.updateReviewView))
-
-// Route to build Delete Review View
-router.get('/review/delete/:reviewId', utilities.checkLogin, utilities.handleErrors(invController.buildByEditInventory))
-
-// Route to handle edit/modify Customer Reviews
-// router.post('/update-review/', utilities.checkLogin, utilities.handleErrors(invController.addCustomerReview))
-
-// Route to handle delete Customer Reviews
-// router.post('/delete-review/', utilities.checkLogin, utilities.handleErrors(invController.deleteCustomerReview))
 
 module.exports = router
