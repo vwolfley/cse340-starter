@@ -244,61 +244,66 @@ Util.buildReviews = async function (data) {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-      };
+    }
 
-    if(data.length === 0) {
+    // Return a default message if there are no reviews
+    if (!data || data.length === 0) {
         return '<p class="zero-review">Be the first to write a review for this vehicle.</p>'
     }
-    
-    let reviewList = '<ul class="review-list">'
-    data.forEach((row) => {
-        const firstInitial = row.account_firstname ?
-        row.account_firstname.charAt(0).toUpperCase() : ''; const lastName = row.account_lastname ?
-        row.account_lastname : ''; const screenName = `${firstInitial}${lastName}`;
-        reviewList += `
+
+    // Build the review list
+    const reviewList = data
+        .map((row) => {
+            const firstInitial = row.account_firstname?.charAt(0).toUpperCase() || ''
+            const lastName = row.account_lastname || ''
+            const screenName = `${firstInitial}${lastName}`
+            const reviewDate = new Date(row.review_date).toLocaleDateString('en-US', options)
+            const reviewText = row.review_text || 'No review text provided.'
+
+            return `
         <li>
             <article class="review-display">
-                <p><strong>${screenName}</strong> wrote on ${row.review_date.toLocaleDateString("en-US", options)}</p>
+                <p><strong>${screenName}</strong> wrote on ${reviewDate}</p>
                 <hr/>
-                <p>${row.review_text}</p>
+                <p>${reviewText}</p>
             </article>
         </li>`
-    })
-    reviewList += '</ul>'
-    return reviewList
+        })
+        .join('')
+
+    return `<ul class="review-list">${reviewList}</ul>`
 }
-
-
 
 /* ****************************************
  * Build view for My reviews - account management page
  **************************************** */
 Util.buildMyReviews = async function (data) {
-    const options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      };
+    const options = { year: 'numeric', month: 'long', day: 'numeric' }
 
-    if(data.length === 0) {
+    // Return a default message if there are no reviews
+    if (!data || data.length === 0) {
         return '<p class="zero-review">You have no reviews.</p>'
     }
-    
-    let reviewList = '<ol type="1" class="my-list">'
-    data.forEach((row) => {
-        reviewList += `
+
+    // Build the review list
+    const reviewList = data
+        .map((row) => {
+            const reviewDate = new Date(row.review_date).toLocaleDateString('en-US', options)
+
+            return `
         <li>
             <article class="my-review-display">
-                <p>Reviewed the <strong>${row.inv_year} ${row.inv_make} ${row.inv_model}</strong> on ${row.review_date.toLocaleDateString("en-US", options)}</p>
+                <p>Reviewed the <strong>${row.inv_year} ${row.inv_make} ${row.inv_model}</strong> on ${reviewDate}</p>
                 <div class="my-review-links">
-                <a href='/review/edit-review/${row.review_id}' class='btn btn-mod-auto' title='Click to update'>Edit</a>
-                <a href='/review/delete-review/${row.review_id}' class='btn btn-del-auto' title='Click to delete'>Delete</a>
+                    <a href='/review/edit-review/${row.review_id}' class='btn btn-mod-auto' title='Click to update'>Edit</a>
+                    <a href='/review/delete-review/${row.review_id}' class='btn btn-del-auto' title='Click to delete'>Delete</a>
                 </div>
             </article>
         </li>`
-    })
-    reviewList += '</0l>'
-    return reviewList
+        })
+        .join('')
+
+    return `<ol type="1" class="my-list">${reviewList}</ol>`
 }
 
 /* ****************************************

@@ -611,7 +611,8 @@ a.submit-button:hover {
 }
 
 .submit-button button:disabled {
-    background-color: #ccc;
+    background-color: var(--light-grey);
+    color: var(--dark-grey);
     cursor: not-allowed;
 }
 
@@ -626,16 +627,18 @@ a.submit-button:hover {
 
 .btn-mod {
     width: 100%;
-    padding: 12px;
+    padding: 4px 8px;
     background-color: var(--primary-color);
     color: #fff;
+    font-size: .8em;
 }
 
 .btn-del {
     width: 100%;
-    padding: 12px;
+    padding: 4px 8px;
     background-color: var(--danger-dark);
     color: #fff;
+    font-size: .8em;
 }
 .btn-mod-auto {
     width: auto;
@@ -679,20 +682,25 @@ a.submit-button:hover {
 }
 #inventoryDisplay th,
 #inventoryDisplay td {
-    margin: 10px 0;
-    padding: 10px 0;
+    /* margin: 5px 0;
+    padding: 5px 0; */
 }
 
 #passWordBtn {
-    border: 2px solid #000;
-    background-color: var(--accent-color);
+    /* border: 2px solid var(--medium-grey); */
+    background-color: var(--medium-grey);
+    color: var(--dark-grey);
     border-radius: 5px;
-    padding: 5px;
+    padding: 8px;
     margin-top: 1em;
     font-size: small;
     width: 7em;
     text-align: center;
     cursor: pointer;
+}
+#passWordBtn:hover {
+    background-color: var(--dark-grey);
+    color: #fff;
 }
 #messages ul {
     margin: 0;
@@ -739,8 +747,8 @@ a.submit-button:hover {
     margin: 1px 0;
 }
 .zero-review {
-    background-color: var(--accent-color);
-    color: white;
+    background-color: var(--success-mute);
+    color: var(--secondary-color);
     margin: 0;
     padding: 10px;
 }
