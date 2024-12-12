@@ -17,7 +17,9 @@
     <div class="registration-container management">
         <h2>Welcome <%= locals.accountData.account_firstname %></h2>
         <h3>You are Logged in!</h3>
-        <a href="/account/update/<%= locals.accountData.account_id %>" class="submit-button"> Update Account Information </a>
+        <a href="/account/update/<%= locals.accountData.account_id %>" class="submit-button">
+            Update Account Information
+        </a>
         <% if (locals.accountData.account_type === "employee" || locals.accountData.account_type === "admin") { %>
         <hr />
         <h4>Inventory Management</h4>
@@ -25,3 +27,10 @@
         <% } %>
     </div>
 </div>
+
+<section class="customer-reviews">
+    <h2>My Reviews</h2>
+
+    <%- myReviews %>
+
+</section>

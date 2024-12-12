@@ -27,7 +27,7 @@ invCont.buildByInventoryID = async function (req, res, next) {
     const inv_id = parseInt(req.params.inventoryId)
     const account_id = res.locals.accountData?.account_id ? parseInt(res.locals.accountData.account_id) : null
     const data = await invModel.getInventoryById(inv_id)
-    const reviewData = await reviewModel.getReviewsById(inv_id, account_id)
+    const reviewData = await reviewModel.getReviewsById(inv_id)
     const customerReviews = await utilities.buildReviews(reviewData)
     const grid = await utilities.buildDetailsGrid(data)
     let nav = await utilities.getNav()
@@ -309,44 +309,5 @@ invCont.deleteInventory = async function (req, res, next) {
     }
 }
 
-/* ***************************
- *  Add Customer Review
- * ************************** */
-invCont.addCustomerReview = async function (req, res, next) {
-    const { inv_id, account_id, review_text } = req.body
-    // console.log(req.body)
-
-    const regResult = await reviewModel.addCustomerReview(inv_id, account_id, review_text)
-    const data = await invModel.getInventoryById(inv_id)
-    const reviewData = await reviewModel.getReviewsById(inv_id, account_id)
-    const customerReviews = await utilities.buildReviews(reviewData)
-    const grid = await utilities.buildDetailsGrid(data)
-    let nav = await utilities.getNav()
-    const className = `${data[0].inv_year} ${data[0].inv_make} ${data[0].inv_model}`
-
-    if (regResult) {
-        req.flash('success', `Success, your review has been added.`)
-        res.render('inventory/details', {
-            title: className,
-            nav,
-            grid,
-            customerReviews,
-            inv_id,
-            account_id,
-            errors: null,
-        })
-    } else {
-        req.flash('notice', 'Sorry, adding inventory failed.')
-        res.render('inventory/details', {
-            title: className,
-            nav,
-            grid,
-            customerReviews,
-            inv_id,
-            account_id,
-            errors: null,
-        })
-    }
-}
 
 module.exports = invCont

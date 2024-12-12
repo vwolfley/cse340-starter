@@ -2,6 +2,7 @@
 const express = require('express')
 const router = new express.Router()
 const invController = require('../controllers/invController')
+const revController = require('../controllers/reviewController')
 const utilities = require('../utilities/')
 const regValidate = require('../utilities/inventory-validation')
 
@@ -60,7 +61,23 @@ router.get('/delete/:inventoryId', utilities.checkAccountType, utilities.handleE
 // Route to handle Delete Inventory
 router.post('/delete/', utilities.handleErrors(invController.deleteInventory))
 
+/* ****************************************
+ *  Review Routes
+ * *************************************** */
+
 // Route to handle Add Customer Review
-router.post('/add-review/', utilities.checkLogin, utilities.handleErrors(invController.addCustomerReview))
+router.post('/add-review/', utilities.checkLogin, utilities.handleErrors(revController.addCustomerReview))
+
+// Route to build Edit Review View
+router.get('/edit-review/:reviewId', utilities.checkLogin, utilities.handleErrors(revController.updateReviewView))
+
+// Route to build Delete Review View
+router.get('/review/delete/:reviewId', utilities.checkLogin, utilities.handleErrors(invController.buildByEditInventory))
+
+// Route to handle edit/modify Customer Reviews
+// router.post('/update-review/', utilities.checkLogin, utilities.handleErrors(invController.addCustomerReview))
+
+// Route to handle delete Customer Reviews
+// router.post('/delete-review/', utilities.checkLogin, utilities.handleErrors(invController.deleteCustomerReview))
 
 module.exports = router
