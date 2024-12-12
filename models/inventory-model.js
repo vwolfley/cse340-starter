@@ -116,7 +116,6 @@ async function updateInventory(
     inv_description,
     inv_image,
     inv_thumbnail,
-
     inv_price,
     inv_year,
     inv_miles,

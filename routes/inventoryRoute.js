@@ -2,6 +2,7 @@
 const express = require('express')
 const router = new express.Router()
 const invController = require('../controllers/invController')
+const revController = require('../controllers/reviewController')
 const utilities = require('../utilities/')
 const regValidate = require('../utilities/inventory-validation')
 
@@ -55,9 +56,14 @@ router.post(
 )
 
 // Route to build Delete Inventory View
-router.get('/delete/:inventoryId', utilities.checkAccountType, utilities.handleErrors(invController.buildByDeleteInventory))
+router.get(
+    '/delete/:inventoryId',
+    utilities.checkAccountType,
+    utilities.handleErrors(invController.buildByDeleteInventory)
+)
 
 // Route to handle Delete Inventory
 router.post('/delete/', utilities.handleErrors(invController.deleteInventory))
+
 
 module.exports = router
