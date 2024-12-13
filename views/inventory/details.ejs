@@ -53,8 +53,10 @@
             </form>
         </div>
     </div>
+    <p>Welcome <%- screenName %> you are logged in.</p>
     <% } else { %>
-    <!-- <p>Not Logged in</p> -->
-    <% } %>
+    <!-- message if you are not logged in -->
     <p>You must be <a href="/account/login" title="Click to log in">logged in</a> to write a review.</p>
+    <% } %>
+    
 </section>

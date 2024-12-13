@@ -656,6 +656,14 @@ a.submit-button:hover {
     font-size: .8em;
 }
 
+.btn-view-auto {
+    width: auto;
+    padding: 4px 8px;
+    background-color: var(--success);
+    color: #fff;
+    font-size: .8em;
+}
+
 .form-container h3 {
     text-align: center;
     margin-top: 10px;
